@@ -5,10 +5,6 @@ function welcome() {
 
 //Step 2
 //Select what computer will play - rock, paper, or scissors
-    //create array with the values
-    //pick a random number from 0-2
-    //set computer selection to arr[x]
-    
 function computerPlay() {
     const computerSelectionArr = ["rock", "paper", "scissors"];
     let index = Math.floor(Math.random() * 3);
@@ -19,16 +15,20 @@ function computerPlay() {
 
 //Get user input for their selection
 function userPlay() {
-    //ask for selection
-    //put in all lowercase
-    //if it doesnt equal rock paper or scissors
-        //ask for another selection
-        //else set userselection variable
+    let userSelection = prompt("Rock, paper, or scissors?");
+    userSelection = userSelection.toLowerCase();
+    if (userSelection == "rock" || userSelection == "paper" || userSelection == "scissors") {
+        return userSelection;
+    } else {
+        userPlay();
+    }
 }
 
 
 //Step 4
 //Play a round of RPS
 function playRound() {
-
+    let computer = computerPlay();
+    let user = userPlay();
+    console.log("Computer chooses " + computer + ". User chooses " + user + ".");
 }
