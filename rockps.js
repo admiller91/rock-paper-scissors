@@ -5,10 +5,16 @@ function welcome() {
 
 //Step 2
 //Select what computer will play - rock, paper, or scissors
-function computerPlay() {
-    //screate array with the values
+    //create array with the values
     //pick a random number from 0-2
     //set computer selection to arr[x]
+    
+function computerPlay() {
+    const computerSelectionArr = ["rock", "paper", "scissors"];
+    let index = Math.floor(Math.random() * 3);
+    let computerSelection = computerSelectionArr[index];
+    //console.log(computerSelection);
+    return computerSelection;
 }
 
 //Get user input for their selection
