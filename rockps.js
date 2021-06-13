@@ -1,40 +1,37 @@
-function welcome() {
-    console.log("Welcome");
-}
+//Event handlers for the 3 buttons
+const rockBtn = document.getElementById('rockBtn');
+const paperBtn = document.getElementById('paperBtn');
+const scissorsBtn = document.getElementById('scissorsBtn');
 
+rockBtn.addEventListener('click', () => {
+    playRound('rock');
+});
+paperBtn.addEventListener('click', () => {
+    playRound('paper');
+});
+scissorsBtn.addEventListener('click', () => {
+    playRound('scissors');
+});
 
-//Step 2
-//Select what computer will play - rock, paper, or scissors
-function computerPlay() {
-    const computerSelectionArr = ["rock", "paper", "scissors"];
-    let index = Math.floor(Math.random() * 3);
-    let computerSelection = computerSelectionArr[index];
-    //console.log(computerSelection);
-    return computerSelection;
-}
-
-//Get user input for their selection
-function userPlay() {
-    let userSelection = prompt("Rock, paper, or scissors?");
-    userSelection = userSelection.toLowerCase();
-    if (userSelection == "rock" || userSelection == "paper" || userSelection == "scissors") {
-        return userSelection;
-    } else {
-        userPlay();
-    }
-}
-
-
-//Step 4
-//Play a round of RPS
-function playRound() {
+function playRound(userSelection) {
+    let user = userSelection;
     let computer = computerPlay();
-    let user = userPlay();
+    const showSelectionP = document.getElementById('showSelection');
+
+    showSelectionP.innerText = "Computer chooses " + computer + ". User chooses " + user + ".";
     console.log("Computer chooses " + computer + ". User chooses " + user + ".");
     determineWinner(computer, user);
 }
 
+function computerPlay() {
+    const computerSelectionArr = ["rock", "paper", "scissors"];
+    let index = Math.floor(Math.random() * 3);
+    let computerSelection = computerSelectionArr[index];
+    return computerSelection;
+}
+
 function determineWinner(computer, user) {
+    const showWinnerH1 = document.getElementById('showWinner');
     let computerWins = false;
     let userWins = false;
     let tie = false;
@@ -71,16 +68,20 @@ function determineWinner(computer, user) {
         computerWins = true;
     }
 
+    //show who won the match in the console and html
 
     if (tie) {
         console.log("It was a tie");
+        showWinnerH1.innerText = 'It was a tie!';
     }
 
     if (computerWins) {
         console.log("The computer won!");
+        showWinnerH1.innerText = 'The computer won!';
     }
 
     if (userWins) {
         console.log("You won!");
+        showWinnerH1.innerText = 'You won!!';
     }
 }
